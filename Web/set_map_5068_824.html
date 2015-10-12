@@ -1,0 +1,603 @@
+<!DOCTYPE HTML> <!-- Declare HTML5 doctype -->
+
+<head>
+    <title>Micello Developer Example</title>    
+    
+    <meta  name="viewport"  content="initial-scale=1.0,  user-scalable=no"  />
+    
+    <!-- Load micellomap.js from micello.com -->
+    <script  type="text/javascript"  src="http://maps.micello.com/webmap/v0/micellomap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    
+    <style type='text/css'>
+        html {width:100%; height:100%; margin:0px;}
+        body {width:100%; height:100%; margin:0px;}
+        #mapElement { /* STYLE YOUR MAP */
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <script type="text/javascript">
+    //JSON DATA
+var data = [{
+    "AP_ID": "67",
+    "count": "4",
+    "longitude": "37.616333",
+    "latitude": "-122.383811"
+}, {
+    "AP_ID": "68",
+    "count": "6",
+    "longitude": "37.616172",
+    "latitude": "-122.383813"
+}, {
+    "AP_ID": "69",
+    "count": "3",
+    "longitude": "37.61624",
+    "latitude": "-122.383745"
+}, {
+    "AP_ID": "70",
+    "count": "73",
+    "longitude": "37.616976",
+    "latitude": "-122.383854"
+}, {
+    "AP_ID": "71",
+    "count": "6",
+    "longitude": "37.616969",
+    "latitude": "-122.384012"
+}, {
+    "AP_ID": "72",
+    "count": "4",
+    "longitude": "37.616744",
+    "latitude": "-122.383909"
+}, {
+    "AP_ID": "73",
+    "count": "9",
+    "longitude": "37.617036",
+    "latitude": "-122.383829"
+}, {
+    "AP_ID": "74",
+    "count": "7",
+    "longitude": "37.616957",
+    "latitude": "-122.383666"
+}, {
+    "AP_ID": "75",
+    "count": "2",
+    "longitude": "37.61755",
+    "latitude": "-122.384355"
+}, {
+    "AP_ID": "76",
+    "count": "1",
+    "longitude": "37.616904",
+    "latitude": "-122.383678"
+}, {
+    "AP_ID": "77",
+    "count": "2",
+    "longitude": "37.617491",
+    "latitude": "-122.384158"
+}, {
+    "AP_ID": "78",
+    "count": "4",
+    "longitude": "37.617341",
+    "latitude": "-122.384223"
+}, {
+    "AP_ID": "79",
+    "count": "17",
+    "longitude": "37.617181",
+    "latitude": "-122.384143"
+}, {
+    "AP_ID": "80",
+    "count": "4",
+    "longitude": "37.617572",
+    "latitude": "-122.384356"
+}, {
+    "AP_ID": "81",
+    "count": "2",
+    "longitude": "37.617153",
+    "latitude": "-122.38374"
+}, {
+    "AP_ID": "82",
+    "count": "3",
+    "longitude": "37.616708",
+    "latitude": "-122.3836"
+}, {
+    "AP_ID": "83",
+    "count": "10",
+    "longitude": "37.616813",
+    "latitude": "-122.383764"
+}, {
+    "AP_ID": "84",
+    "count": "127",
+    "longitude": "37.617057",
+    "latitude": "-122.384184"
+}, {
+    "AP_ID": "85",
+    "count": "3",
+    "longitude": "37.61658",
+    "latitude": "-122.383396"
+}, {
+    "AP_ID": "86",
+    "count": "7",
+    "longitude": "37.616515",
+    "latitude": "-122.383837"
+}, {
+    "AP_ID": "87",
+    "count": "80",
+    "longitude": "37.616647",
+    "latitude": "-122.384027"
+}, {
+    "AP_ID": "88",
+    "count": "3",
+    "longitude": "37.617407",
+    "latitude": "-122.383731"
+}, {
+    "AP_ID": "89",
+    "count": "6",
+    "longitude": "37.617261",
+    "latitude": "-122.383619"
+}, {
+    "AP_ID": "90",
+    "count": "64",
+    "longitude": "37.617308",
+    "latitude": "-122.381649"
+}, {
+    "AP_ID": "91",
+    "count": "77",
+    "longitude": "37.61735",
+    "latitude": "-122.381288"
+}, {
+    "AP_ID": "92",
+    "count": "111",
+    "longitude": "37.617049",
+    "latitude": "-122.381025"
+}, {
+    "AP_ID": "93",
+    "count": "58",
+    "longitude": "37.617085",
+    "latitude": "-122.381323"
+}, {
+    "AP_ID": "94",
+    "count": "10",
+    "longitude": "37.61734",
+    "latitude": "-122.383839"
+}, {
+    "AP_ID": "95",
+    "count": "17",
+    "longitude": "37.617486",
+    "latitude": "-122.381772"
+}, {
+    "AP_ID": "96",
+    "count": "7",
+    "longitude": "37.6175",
+    "latitude": "-122.382278"
+}, {
+    "AP_ID": "97",
+    "count": "59",
+    "longitude": "37.617679",
+    "latitude": "-122.381424"
+}, {
+    "AP_ID": "98",
+    "count": "30",
+    "longitude": "37.617191",
+    "latitude": "-122.382476"
+}, {
+    "AP_ID": "99",
+    "count": "49",
+    "longitude": "37.61738",
+    "latitude": "-122.38208"
+}, {
+    "AP_ID": "100",
+    "count": "34",
+    "longitude": "37.61735",
+    "latitude": "-122.381797"
+}, {
+    "AP_ID": "101",
+    "count": "11",
+    "longitude": "37.617399",
+    "latitude": "-122.382455"
+}, {
+    "AP_ID": "102",
+    "count": "110",
+    "longitude": "37.618095",
+    "latitude": "-122.381608"
+}, {
+    "AP_ID": "103",
+    "count": "7",
+    "longitude": "37.617356",
+    "latitude": "-122.382348"
+}, {
+    "AP_ID": "104",
+    "count": "80",
+    "longitude": "37.617591",
+    "latitude": "-122.381147"
+}, {
+    "AP_ID": "106",
+    "count": "50",
+    "longitude": "37.617637",
+    "latitude": "-122.381727"
+}, {
+    "AP_ID": "107",
+    "count": "58",
+    "longitude": "37.618052",
+    "latitude": "-122.381325"
+}, {
+    "AP_ID": "109",
+    "count": "13",
+    "longitude": "37.617246",
+    "latitude": "-122.38225"
+}, {
+    "AP_ID": "110",
+    "count": "23",
+    "longitude": "37.617121",
+    "latitude": "-122.383151"
+}, {
+    "AP_ID": "111",
+    "count": "15",
+    "longitude": "37.617288",
+    "latitude": "-122.383077"
+}, {
+    "AP_ID": "112",
+    "count": "4",
+    "longitude": "37.616803",
+    "latitude": "-122.383368"
+}, {
+    "AP_ID": "113",
+    "count": "22",
+    "longitude": "37.617114",
+    "latitude": "-122.382676"
+}, {
+    "AP_ID": "114",
+    "count": "58",
+    "longitude": "37.617326",
+    "latitude": "-122.384014"
+}, {
+    "AP_ID": "115",
+    "count": "3",
+    "longitude": "37.617439",
+    "latitude": "-122.383532"
+}, {
+    "AP_ID": "116",
+    "count": "13",
+    "longitude": "37.617005",
+    "latitude": "-122.382835"
+}, {
+    "AP_ID": "117",
+    "count": "7",
+    "longitude": "37.616629",
+    "latitude": "-122.383517"
+}, {
+    "AP_ID": "118",
+    "count": "15",
+    "longitude": "37.617287",
+    "latitude": "-122.382833"
+}, {
+    "AP_ID": "119",
+    "count": "9",
+    "longitude": "37.616387",
+    "latitude": "-122.383475"
+}, {
+    "AP_ID": "120",
+    "count": "3",
+    "longitude": "37.617416",
+    "latitude": "-122.383615"
+}, {
+    "AP_ID": "121",
+    "count": "32",
+    "longitude": "37.617001",
+    "latitude": "-122.383352"
+}, {
+    "AP_ID": "122",
+    "count": "1",
+    "longitude": "37.616583",
+    "latitude": "-122.383344"
+}, {
+    "AP_ID": "123",
+    "count": "5",
+    "longitude": "37.616692",
+    "latitude": "-122.383163"
+}, {
+    "AP_ID": "125",
+    "count": "8",
+    "longitude": "37.617382",
+    "latitude": "-122.383791"
+}, {
+    "AP_ID": "126",
+    "count": "6",
+    "longitude": "37.617503",
+    "latitude": "-122.383983"
+}, {
+    "AP_ID": "127",
+    "count": "9",
+    "longitude": "37.616817",
+    "latitude": "-122.383224"
+}, {
+    "AP_ID": "210",
+    "count": "8",
+    "longitude": "37.617362",
+    "latitude": "-122.38329"
+}, {
+    "AP_ID": "595",
+    "count": "7",
+    "longitude": "37.617205",
+    "latitude": "-122.380836"
+}, {
+    "AP_ID": "596",
+    "count": "39",
+    "longitude": "37.617524",
+    "latitude": "-122.381023"
+}, {
+    "AP_ID": "597",
+    "count": "3",
+    "longitude": "37.616506",
+    "latitude": "-122.383586"
+}, {
+    "AP_ID": "598",
+    "count": "1",
+    "longitude": "37.616818",
+    "latitude": "-122.380982"
+}, {
+    "AP_ID": "600",
+    "count": "1",
+    "longitude": "37.617309",
+    "latitude": "-122.383038"
+}, {
+    "AP_ID": "601",
+    "count": "10",
+    "longitude": "37.617128",
+    "latitude": "-122.381255"
+}, {
+    "AP_ID": "603",
+    "count": "9",
+    "longitude": "37.616221",
+    "latitude": "-122.383572"
+}, {
+    "AP_ID": "604",
+    "count": "10",
+    "longitude": "37.617315",
+    "latitude": "-122.381189"
+}, {
+    "AP_ID": "605",
+    "count": "26",
+    "longitude": "37.616986",
+    "latitude": "-122.38246"
+}, {
+    "AP_ID": "606",
+    "count": "5",
+    "longitude": "37.617322",
+    "latitude": "-122.38343"
+}, {
+    "AP_ID": "608",
+    "count": "1",
+    "longitude": "37.617071",
+    "latitude": "-122.38345"
+}, {
+    "AP_ID": "610",
+    "count": "6",
+    "longitude": "37.616888",
+    "latitude": "-122.382894"
+}, {
+    "AP_ID": "611",
+    "count": "5",
+    "longitude": "37.617302",
+    "latitude": "-122.381644"
+}, {
+    "AP_ID": "612",
+    "count": "1",
+    "longitude": "37.617692",
+    "latitude": "-122.384349"
+}, {
+    "AP_ID": "613",
+    "count": "1",
+    "longitude": "37.617187",
+    "latitude": "-122.382759"
+}, {
+    "AP_ID": "615",
+    "count": "4",
+    "longitude": "37.616986",
+    "latitude": "-122.382599"
+}, {
+    "AP_ID": "616",
+    "count": "13",
+    "longitude": "37.617432",
+    "latitude": "-122.383919"
+}, {
+    "AP_ID": "617",
+    "count": "5",
+    "longitude": "37.616788",
+    "latitude": "-122.383488"
+}, {
+    "AP_ID": "619",
+    "count": "25",
+    "longitude": "37.617631",
+    "latitude": "-122.381948"
+}, {
+    "AP_ID": "621",
+    "count": "11",
+    "longitude": "37.617911",
+    "latitude": "-122.381569"
+}, {
+    "AP_ID": "623",
+    "count": "15",
+    "longitude": "37.61643",
+    "latitude": "-122.383391"
+}, {
+    "AP_ID": "624",
+    "count": "3",
+    "longitude": "37.617329",
+    "latitude": "-122.382734"
+}, {
+    "AP_ID": "625",
+    "count": "36",
+    "longitude": "37.617048",
+    "latitude": "-122.381447"
+}, {
+    "AP_ID": "627",
+    "count": "6",
+    "longitude": "37.61754",
+    "latitude": "-122.383875"
+}, {
+    "AP_ID": "628",
+    "count": "26",
+    "longitude": "37.617006",
+    "latitude": "-122.380857"
+}, {
+    "AP_ID": "631",
+    "count": "3",
+    "longitude": "37.617149",
+    "latitude": "-122.38235"
+}, {
+    "AP_ID": "632",
+    "count": "1",
+    "longitude": "37.617413",
+    "latitude": "-122.382425"
+}, {
+    "AP_ID": "633",
+    "count": "1",
+    "longitude": "37.618193",
+    "latitude": "-122.381319"
+}, {
+    "AP_ID": "634",
+    "count": "17",
+    "longitude": "37.616805",
+    "latitude": "-122.381019"
+}, {
+    "AP_ID": "635",
+    "count": "3",
+    "longitude": "37.617684",
+    "latitude": "-122.381547"
+}, {
+    "AP_ID": "636",
+    "count": "3",
+    "longitude": "37.616976",
+    "latitude": "-122.381041"
+}, {
+    "AP_ID": "637",
+    "count": "6",
+    "longitude": "37.618104",
+    "latitude": "-122.38127"
+}, {
+    "AP_ID": "640",
+    "count": "5",
+    "longitude": "37.61736",
+    "latitude": "-122.381894"
+}, {
+    "AP_ID": "641",
+    "count": "5",
+    "longitude": "37.618288",
+    "latitude": "-122.381595"
+}, {
+    "AP_ID": "642",
+    "count": "28",
+    "longitude": "37.616934",
+    "latitude": "-122.381177"
+}, {
+    "AP_ID": "643",
+    "count": "1",
+    "longitude": "37.616063",
+    "latitude": "-122.383692"
+}, {
+    "AP_ID": "644",
+    "count": "1",
+    "longitude": "37.617513",
+    "latitude": "-122.383584"
+}, {
+    "AP_ID": "645",
+    "count": "26",
+    "longitude": "37.617776",
+    "latitude": "-122.381122"
+}, {
+    "AP_ID": "646",
+    "count": "2",
+    "longitude": "37.616727",
+    "latitude": "-122.383197"
+}, {
+    "AP_ID": "650",
+    "count": "5",
+    "longitude": "37.618084",
+    "latitude": "-122.381178"
+}, {
+    "AP_ID": "652",
+    "count": "7",
+    "longitude": "37.617821",
+    "latitude": "-122.381371"
+}, {
+    "AP_ID": "653",
+    "count": "4",
+    "longitude": "37.618298",
+    "latitude": "-122.381567"
+}, {
+    "AP_ID": "654",
+    "count": "25",
+    "longitude": "37.617491",
+    "latitude": "-122.382663"
+}, {
+    "AP_ID": "655",
+    "count": "24",
+    "longitude": "37.617186",
+    "latitude": "-122.381969"
+}]
+    //DATA END
+    </script>
+
+    <script type='text/javascript'>
+        
+		var geo_coords = [];
+        var key = "e75a3a32-4bac-4330-9fa6-da3ca9c689dc"; // this is YOUR api key!
+        var mapDataObject;
+		var mapControl;
+
+        micello.maps.init (key, mapInit);
+		function onMapClick (mx, my, clicked) {
+			alert("Map click at: "+mx+", "+my);
+			if (clicked) {
+				mapControl.defaultSelectAction(clicked);
+				alert("Geometry info: \rID: "+clicked.id+"\rName: "+clicked.nm+"\rType: "+clicked.t);
+			}
+
+		}
+		function placeMarker () {
+            var thisLevel = mapDataObject.getCurrentLevel(); // get current level object
+			 var map_coords = mapDataObject.latLonToMxy(geo_coords[0], geo_coords[1]);
+            var tweetMarker = {
+				"mx": map_coords[0],
+				"my": map_coords[1],
+				"lid": 16447,
+				"mt": micello.maps.markertype.NAMED,
+				"mr": "TrackingDot",
+				"idat": "<div>HTML content.</div>"
+			}
+			var aid = tweetMarker.aid;
+			mapDataObject.addMarkerOverlay(tweetMarker);
+			console.log('b');
+		}
+		function onMapChanged(e) {
+			if(e.comLoad) {
+				data.forEach(function(loc) {
+					geo_coords = [parseFloat(loc.longitude), parseFloat(loc.latitude)];
+					console.log(geo_coords);	
+					placeMarker();				
+				});
+			}
+		}
+        function  mapInit() {
+            mapControl =  new micello.maps.MapControl('mapElement');
+            mapDataObject = mapControl.getMapData();
+            mapDataObject.loadCommunity(824, 11238, 16447); // cid, did, lid
+
+		//	mapControl.onMapClick = onMapClick;
+			mapDataObject.mapChanged = onMapChanged;
+        }
+        
+//        Hint: Combos that work with this map:
+//            Drawing: 10485 - Levels: 14005
+//            Drawing: 11237 - Levels: 16452, 16446, 16451
+//            Drawing: 11238 - Levels: 16449, 16447
+//            Drawing: 11239 - Levels: 16453, 16448, 16454
+        
+    </script>
+</head>
+
+<body>
+<div id='mapElement'></div>
+</body>
+</HTML>
