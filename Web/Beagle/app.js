@@ -9,8 +9,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var router = express.Router();
 
-mongoose.connect('mongodb://thacks:sfohacks@kahana.mongohq.com:10031/sconnect');
-// Console - mongo kahana.mongohq.com:10031/sconnect -rohitf admin -rf1406 pass
+mongoose.connect('mongodb://<Removed>:<Removed>@kahana.mongohq.com:<Removed>');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
